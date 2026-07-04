@@ -1,0 +1,204 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --bg-dark: #030712;
+    --bg-card: rgba(15, 23, 42, 0.7);
+    --neon-blue: #00E5FF;
+    --neon-green: #39FF14;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --border-glow-blue: 0 0 15px rgba(0, 229, 255, 0.3);
+    --border-glow-green: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(57, 255, 20, 0.05) 0%, transparent 50%);
+}
+
+h1, h2, h3, h4 { font-family: 'Poppins', 'Kanit', sans-serif; }
+a { text-decoration: none; transition: 0.3s; }
+a:hover { color: inherit; }
+p { margin-bottom: 0; }
+
+.neon-blue { color: var(--neon-blue); text-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
+.neon-green { color: var(--neon-green); text-shadow: 0 0 8px rgba(57, 255, 20, 0.4); }
+
+/* ================= HEADER BANNER ================= */
+.hero-banner {
+    text-align: center;
+    padding: 100px 20px;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+}
+.hero-banner h1 { font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; }
+.hero-banner p { font-size: 1.2rem; color: var(--text-muted); }
+
+/* ================= COMPONENT STYLES ================= */
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--neon-blue);
+    padding-left: 15px;
+}
+
+.custom-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    /* height: 100%; <--- ลบบรรทัดนี้ทิ้งเลยครับ เพื่อให้กล่องพอดีกับเนื้อหา */
+    transition: 0.4s ease;
+}
+
+.custom-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: var(--border-glow-green);
+    transform: translateY(-5px);
+}
+
+/* ================= TEAM MEMBER CARD ================= */
+.team-card {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* <--- เพิ่มบรรทัดนี้เข้ามา เพื่อให้การ์ดในหน้าแรกสูงเท่ากัน */
+}
+.team-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+}
+.team-card:hover { border-color: var(--neon-blue); box-shadow: var(--border-glow-blue); }
+
+.profile-img {
+    width: 130px; height: 130px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--neon-green);
+    padding: 5px; margin-bottom: 20px;
+}
+.team-card .role { color: var(--neon-green); font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; }
+
+.btn-outline {
+    display: inline-block; padding: 10px 25px;
+    border: 2px solid var(--neon-blue); color: var(--neon-blue);
+    border-radius: 30px; font-weight: 600;
+}
+.btn-outline:hover { background: var(--neon-blue); color: var(--bg-dark); }
+
+/* ================= RESUME STYLES ================= */
+.resume-header {
+    background: var(--bg-card); padding: 40px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;
+}
+.resume-header img {
+    width: 160px; height: 160px; border-radius: 20px;
+    object-fit: cover; border: 2px solid var(--neon-blue);
+}
+.social-icons a { color: var(--text-muted); font-size: 1.5rem; margin-right: 15px; }
+.social-icons a:hover { color: var(--neon-blue); transform: translateY(-3px); }
+
+.resume-h3 {
+    font-size: 1.5rem; color: var(--text-main); margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+}
+.resume-h3 i { color: var(--neon-blue); margin-right: 10px; }
+
+.skill-tags span {
+    background: rgba(0, 229, 255, 0.1); color: var(--neon-blue);
+    padding: 6px 15px; border-radius: 20px; font-size: 0.9rem;
+    border: 1px solid rgba(0, 229, 255, 0.3); display: inline-block; margin: 0 5px 10px 0;
+}
+
+.timeline-item {
+    margin-bottom: 20px; padding-left: 20px;
+    border-left: 2px solid var(--neon-green); position: relative;
+}
+.timeline-item::before {
+    content: ''; position: absolute; left: -7px; top: 5px;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--neon-green);
+}
+.timeline-item .date { color: var(--neon-blue); font-size: 0.9rem; margin-bottom: 5px; display: block; }
+
+.project-item {
+    background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 12px;
+    border-left: 3px solid var(--neon-blue); margin-bottom: 15px;
+}
+.project-item:hover { border-color: var(--neon-green); background: rgba(0, 229, 255, 0.05); }
+.project-item .tech-stack { color: var(--neon-blue); font-size: 0.85rem; display: block; margin-bottom: 10px; }
+
+.qr-box { background: white; padding: 10px; border-radius: 8px; width: 100px; height: 100px; }
+.qr-box img { width: 100%; height: 100%; }
+/* ================= PREMIUM RESUME UPGRADES ================= */
+/* Cover Banner ในส่วน Header */
+.resume-cover {
+    height: 160px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(57, 255, 20, 0.15) 100%);
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-cover::after {
+    content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+    opacity: 0.1;
+}
+
+/* ปรับรูปโปรไฟล์ให้ลอยขึ้นมาซ้อนกับ Cover */
+.profile-img-large {
+    width: 150px; height: 150px;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--bg-dark); /* ขอบสีเดียวกับพื้นหลังเว็บ */
+    background: var(--bg-card);
+    margin-top: -75px; /* ดึงรูปขึ้นไปซ้อน */
+    position: relative; z-index: 2;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* แถบ Progress Bar สไตล์ Neon */
+.progress-bg {
+    background: rgba(255, 255, 255, 0.05);
+    height: 8px; border-radius: 10px; overflow: hidden; margin-bottom: 15px;
+}
+.progress-bar-neon {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), #0088ff);
+    box-shadow: var(--border-glow-blue);
+    border-radius: 10px;
+}
+.progress-bar-green { background: linear-gradient(90deg, var(--neon-green), #2db300); box-shadow: var(--border-glow-green); }
+
+/* ปรับแต่งเส้น Timeline ใหม่ */
+.timeline-container {
+    border-left: 2px solid rgba(0, 229, 255, 0.15);
+    padding-left: 25px; margin-left: 10px;
+}
+.timeline-item {
+    border-left: none; padding-left: 0; margin-bottom: 25px;
+}
+.timeline-item::before {
+    left: -32px; /* ขยับจุดให้ตรงกับเส้นที่สร้างใหม่ */
+    top: 5px;
+    background: var(--bg-dark);
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.contact-pill {
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 6px 15px; border-radius: 30px;
+    font-size: 0.9rem;
+}
